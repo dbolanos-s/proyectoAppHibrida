@@ -1,0 +1,372 @@
+/* ============================================================
+   COPOL — estilos propios
+   Los colores de urgencia viven aquí como variables para que
+   utils/colores.ts los referencie por nombre y no por hex.
+   ============================================================ */
+
+:root {
+  --copol-vencida: #b3261e;
+  --copol-inmediata: #e8590c;
+  --copol-proxima: #d97706;
+  --copol-semana: #b59000;
+  --copol-lejana: #2e7d5b;
+  --copol-entregada: #6b7280;
+
+  --copol-celda-alto: 58px;
+  --copol-hora-ancho: 52px;
+  --copol-celda-vacia: rgba(0, 0, 0, 0.04);
+  --copol-celda-borde: rgba(0, 0, 0, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ion-palette-dark {
+  --copol-vencida: #ff6b60;
+  --copol-inmediata: #ff9052;
+  --copol-proxima: #f0b429;
+  --copol-semana: #e3c14a;
+  --copol-lejana: #56c596;
+  --copol-entregada: #9ca3af;
+  --copol-celda-vacia: rgba(255, 255, 255, 0.06);
+  --copol-celda-borde: rgba(255, 255, 255, 0.16);
+}
+}
+
+/* ---------- Utilidades ---------- */
+
+.copol-nota {
+  display: block;
+  padding: 8px 20px 16px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.copol-seccion {
+  display: block;
+  padding: 16px 20px 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ion-color-medium);
+}
+
+.copol-fecha-hoy {
+  margin: 4px 20px 0;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  color: var(--ion-color-medium);
+}
+
+.copol-espacio-fab {
+  height: 84px;
+}
+
+.copol-vacio {
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--ion-color-medium);
+}
+
+.copol-vacio h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--ion-text-color);
+}
+
+.copol-vacio p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---------- Tareas ---------- */
+
+.copol-franja {
+  display: block;
+  width: 4px;
+  height: 34px;
+  border-radius: 2px;
+  margin-inline-end: 12px;
+  flex-shrink: 0;
+}
+
+.copol-punto {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-inline-end: 6px;
+  vertical-align: middle;
+}
+
+.copol-contador {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.copol-contador ion-icon {
+  font-size: 0.95rem;
+}
+
+.copol-tarea.entregada {
+  opacity: 0.55;
+}
+
+.tachado {
+  text-decoration: line-through;
+}
+
+.copol-estrella {
+  font-size: 1.35rem;
+  color: var(--ion-color-medium);
+  padding: 6px;
+}
+
+.copol-estrella.activa {
+  color: #f0a500;
+}
+
+.copol-clase.en-curso {
+  --background: var(--ion-color-light);
+  font-weight: 600;
+}
+
+/* ---------- Cuadrícula del horario ---------- */
+
+.copol-grid {
+  padding: 12px 8px 0;
+}
+
+.copol-grid-cabecera,
+.copol-grid-fila {
+  display: grid;
+  grid-template-columns: var(--copol-hora-ancho) repeat(5, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.copol-dia {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  color: var(--ion-color-medium);
+}
+
+.copol-dia.hoy {
+  color: var(--ion-color-primary);
+}
+
+.copol-col-hora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-inline-end: 6px;
+  font-size: 0.65rem;
+  line-height: 1.25;
+  color: var(--ion-color-medium);
+}
+
+.copol-col-hora strong {
+  font-size: 0.72rem;
+  color: var(--ion-text-color);
+}
+
+.copol-celda {
+  position: relative;
+  height: var(--copol-celda-alto);
+  border: none;
+  border-radius: 10px;
+  padding: 4px;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+.copol-celda.vacia {
+  background: var(--copol-celda-vacia);
+  color: var(--ion-color-medium);
+  font-size: 1.1rem;
+  border: 1px dashed var(--copol-celda-borde);
+}
+
+.copol-celda.llena {
+  color: #fff;
+}
+
+.copol-celda.ahora {
+  outline: 2px solid var(--ion-color-primary);
+  outline-offset: 1px;
+}
+
+.copol-celda:focus-visible {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}
+
+.copol-celda-nombre {
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  word-break: break-word;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.copol-celda-badge {
+  position: absolute;
+  top: 3px;
+  inset-inline-end: 3px;
+  font-size: 0.6rem;
+  padding: 2px 5px;
+  --background: rgba(0, 0, 0, 0.35);
+  --color: #fff;
+}
+
+/* ---------- Paleta de materias ---------- */
+
+.copol-paleta {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding: 4px 20px 20px;
+}
+
+.copol-swatch {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.copol-swatch.elegido {
+  border-color: var(--ion-text-color);
+  transform: scale(1.12);
+}
+
+.copol-swatch:focus-visible {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}
+
+.copol-orden {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ion-color-medium);
+  min-width: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* ---------- Clima ---------- */
+
+.copol-clima {
+  margin: 12px 16px 4px;
+}
+
+.copol-clima-cargando {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--ion-color-medium);
+}
+
+.copol-clima-fila {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.copol-clima-fila > ion-icon {
+  font-size: 2.1rem;
+  color: var(--ion-color-primary);
+  flex-shrink: 0;
+}
+
+.copol-clima-datos {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.copol-clima-datos strong {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--ion-text-color);
+}
+
+.copol-clima-datos span {
+  font-size: 0.78rem;
+  color: var(--ion-color-medium);
+}
+
+.copol-clima-rango {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.72rem;
+  color: var(--ion-color-medium);
+  flex-shrink: 0;
+}
+
+.copol-clima-consejo {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--ion-color-step-150, rgba(128, 128, 128, 0.2));
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ion-text-color);
+}
+
+/* ---------- Gráficos ---------- */
+
+.copol-gráfico {
+  padding: 0 16px 8px;
+}
+
+.copol-lienzo {
+  height: 230px;
+  margin-top: 14px;
+}
+
+.copol-segmento {
+  padding: 8px 16px 4px;
+}
+
+/* ---------- Historial ---------- */
+
+.copol-evento {
+  --min-height: 56px;
+}
+
+.copol-evento-icono {
+  font-size: 1.1rem;
+  color: var(--ion-color-medium);
+  margin-inline-end: 12px;
+}
+
+.copol-evento-detalle {
+  font-size: 0.86rem;
+  line-height: 1.35;
+  color: var(--ion-text-color);
+  margin: 0 0 2px;
+}
