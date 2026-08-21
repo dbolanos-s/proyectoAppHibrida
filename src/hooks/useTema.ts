@@ -21,7 +21,13 @@ export function useTema(tema: Tema): void {
     const consulta = window.matchMedia('(prefers-color-scheme: dark)');
     aplicar(consulta.matches);
     const alCambiar = (e: MediaQueryListEvent) => aplicar(e.matches);
-    consulta.addEventListener('change', alCambiar);
-    return () => consulta.removeEventListener('change', alCambiar);
+    if (typeof consulta.addEventListener === 'function') {
+      consulta.addEventListener('change', alCambiar);
+      return () => consulta.removeEventListener('change', alCambiar);
+    }
+
+    // Compatibilidad con navegadores antiguos y con el entorno de pruebas.
+    consulta.addListener(alCambiar);
+    return () => consulta.removeListener(alCambiar);
   }, [tema]);
 }

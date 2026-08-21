@@ -63,7 +63,7 @@ const Horario: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
+      <IonContent fullscreen className="copol-pagina-horario">
         <CuadriculaHorario />
 
         <IonModal isOpen={config} onDidDismiss={() => setConfig(false)}>
@@ -81,13 +81,12 @@ const Horario: React.FC = () => {
             </IonToolbar>
           </IonHeader>
 
-          <IonContent className="ion-padding">
+          <IonContent className="copol-formulario">
             <IonNote className="copol-nota">
-              Define las horas de tu jornada. Al cambiar una hora de inicio, las materias ya
-              asignadas a ese período se conservan.
+              Ajusta las horas de tu jornada y agrega solo los períodos que utilizas.
             </IonNote>
 
-            <IonList inset>
+            <IonList inset className="copol-formulario-lista copol-lista-periodos">
               {borrador.map((p, i) => (
                 <IonItem key={i}>
                   <IonLabel slot="start" className="copol-orden">
@@ -102,7 +101,7 @@ const Horario: React.FC = () => {
                   />
                   <IonInput
                     type="time"
-                    label="Termina"
+                    label="Fin"
                     labelPlacement="stacked"
                     value={p.horaFin}
                     onIonInput={(e) => cambiar(i, 'horaFin', e.detail.value ?? '')}
@@ -114,7 +113,7 @@ const Horario: React.FC = () => {
               ))}
             </IonList>
 
-            <IonButton expand="block" fill="outline" onClick={agregar}>
+            <IonButton className="copol-boton-secundario" expand="block" fill="outline" onClick={agregar}>
               <IonIcon slot="start" icon={add} />
               Agregar período
             </IonButton>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons,
-  IonBackButton, IonList, IonListHeader, IonLabel, IonItem, IonNote,
+  IonBackButton, IonList, IonListHeader, IonLabel, IonNote,
   IonFab, IonFabButton, IonIcon, IonSegment, IonSegmentButton,
 } from '@ionic/react';
 import { add } from 'ionicons/icons';
@@ -50,12 +50,12 @@ const DetalleMateria: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
+      <IonContent fullscreen className="copol-pagina-detalle">
         {!materia ? (
           <div className="copol-vacio"><h2>Esta materia ya no existe</h2></div>
         ) : (
           <>
-            <IonNote className="copol-nota">
+            <IonNote className="copol-nota copol-resumen-detalle">
               {[
                 clases.map((c) => `${DIAS.find((d) => d.valor === c.diaSemana)?.corto} ${c.horaInicio}`).join(' · '),
                 materia.nivel, materia.programa, materia.aula, materia.docente,
@@ -71,12 +71,10 @@ const DetalleMateria: React.FC = () => {
 
             {vista === 'tareas' ? (
               <>
-                <IonList inset>
+                <IonList inset className="copol-lista-principal">
                   <IonListHeader><IonLabel>Pendientes</IonLabel></IonListHeader>
                   {pendientes.length === 0 ? (
-                    <IonItem lines="none">
-                      <IonNote>Nada pendiente en {materia.nombre}.</IonNote>
-                    </IonItem>
+                    <p className="copol-inicio-vacio">Nada pendiente en {materia.nombre}.</p>
                   ) : (
                     pendientes.map((t) => (
                       <TarjetaTarea key={t.id} tarea={t} onEditar={abrirEdicion} mostrarMateria={false} />
@@ -85,7 +83,7 @@ const DetalleMateria: React.FC = () => {
                 </IonList>
 
                 {entregadas.length > 0 && (
-                  <IonList inset>
+                  <IonList inset className="copol-lista-principal">
                     <IonListHeader><IonLabel>Entregadas</IonLabel></IonListHeader>
                     {entregadas.map((t) => (
                       <TarjetaTarea key={t.id} tarea={t} onEditar={abrirEdicion} mostrarMateria={false} />

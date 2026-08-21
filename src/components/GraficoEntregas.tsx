@@ -65,6 +65,7 @@ const GraficoEntregas: React.FC<Props> = ({ vista, onCambiarVista }) => {
 
   return (
     <div className="copol-gráfico">
+      <h2 className="copol-titulo-seccion">Cómo viene tu carga</h2>
       <IonSegment
         value={vista}
         onIonChange={(e) => onCambiarVista(e.detail.value as 'semana' | 'materia')}
