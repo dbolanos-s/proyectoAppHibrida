@@ -104,8 +104,8 @@ const CuadriculaHorario: React.FC = () => {
         ))}
       </div>
 
-      <IonNote className="copol-nota">
-        Toca una celda vacía para asignar materia. Mantén pulsada una celda ocupada para liberarla.
+      <IonNote className="copol-nota copol-ayuda-horario">
+        Toca para asignar una materia. Mantén pulsado para liberar una clase.
       </IonNote>
 
       <IonAlert

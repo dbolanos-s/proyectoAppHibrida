@@ -1,2 +1,49 @@
-/* For information on how to create your own theme, please refer to:
-http://ionicframework.com/docs/theming/ */
+/* Base visual de COPOL. Se mantienen los componentes y la paleta de Ionic,
+   pero con superficies más tranquilas y una jerarquía más clara. */
+
+:root {
+  --ion-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --ion-color-primary: #435b8f;
+  --ion-color-primary-rgb: 67, 91, 143;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3b507e;
+  --ion-color-primary-tint: #566b9a;
+
+  --ion-background-color: #f5f6f8;
+  --ion-background-color-rgb: 245, 246, 248;
+  --ion-text-color: #1d2633;
+  --ion-text-color-rgb: 29, 38, 51;
+  --ion-toolbar-background: #f5f6f8;
+  --ion-toolbar-border-color: transparent;
+  --ion-card-background: #ffffff;
+  --ion-item-background: #ffffff;
+
+  --copol-superficie: #ffffff;
+  --copol-borde: #e5e8ed;
+  --copol-texto-suave: #667085;
+  --copol-sombra: 0 8px 24px rgba(40, 51, 70, 0.05);
+}
+
+.ion-palette-dark {
+  --ion-color-primary: #9aadd8;
+  --ion-color-primary-rgb: 154, 173, 216;
+  --ion-color-primary-contrast: #111722;
+  --ion-color-primary-contrast-rgb: 17, 23, 34;
+  --ion-color-primary-shade: #8898be;
+  --ion-color-primary-tint: #a4b5dc;
+
+  --ion-background-color: #101318;
+  --ion-background-color-rgb: 16, 19, 24;
+  --ion-text-color: #edf0f4;
+  --ion-text-color-rgb: 237, 240, 244;
+  --ion-toolbar-background: #101318;
+  --ion-card-background: #181c23;
+  --ion-item-background: #181c23;
+
+  --copol-superficie: #181c23;
+  --copol-borde: #292f39;
+  --copol-texto-suave: #a5adba;
+  --copol-sombra: none;
+}

@@ -12,14 +12,13 @@
   --copol-lejana: #2e7d5b;
   --copol-entregada: #6b7280;
 
-  --copol-celda-alto: 58px;
+  --copol-celda-alto: 52px;
   --copol-hora-ancho: 52px;
   --copol-celda-vacia: rgba(0, 0, 0, 0.04);
   --copol-celda-borde: rgba(0, 0, 0, 0.14);
 }
 
-@media (prefers-color-scheme: dark) {
-  .ion-palette-dark {
+.ion-palette-dark {
   --copol-vencida: #ff6b60;
   --copol-inmediata: #ff9052;
   --copol-proxima: #f0b429;
@@ -29,13 +28,232 @@
   --copol-celda-vacia: rgba(255, 255, 255, 0.06);
   --copol-celda-borde: rgba(255, 255, 255, 0.16);
 }
+
+/* ---------- Base y navegación ---------- */
+
+ion-toolbar {
+  --border-color: transparent;
+}
+
+ion-title {
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+ion-list[inset] {
+  width: calc(100% - 32px);
+  max-width: 720px;
+  margin: 12px auto 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--copol-borde);
+  border-radius: 14px;
+  background: var(--copol-superficie);
+  box-shadow: var(--copol-sombra);
+}
+
+/* ---------- Formularios y pantallas de datos ---------- */
+
+.copol-formulario {
+  --padding-bottom: 28px;
+}
+
+.copol-formulario-intro {
+  width: calc(100% - 40px);
+  max-width: 680px;
+  margin: 18px auto 4px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+  color: var(--copol-texto-suave);
+}
+
+.copol-formulario-lista {
+  margin-top: 12px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+.copol-formulario-lista ion-item {
+  --min-height: 54px;
+  --padding-start: 16px;
+  --inner-padding-end: 14px;
+}
+
+.copol-formulario-lista ion-input,
+.copol-formulario-lista ion-select,
+.copol-formulario-lista ion-textarea {
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
+.copol-formulario-aviso {
+  display: block;
+  max-width: 680px;
+  margin: 12px auto 0;
+  padding: 0 20px;
+  font-size: 0.82rem;
+}
+
+.copol-boton-secundario {
+  width: calc(100% - 40px);
+  max-width: 680px;
+  margin: 16px auto 0;
+}
+
+.copol-lista-principal,
+.copol-ajustes-grupo {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.copol-lista-principal ion-item {
+  --min-height: 56px;
+}
+
+.copol-ayuda-lista {
+  width: calc(100% - 32px);
+  padding-top: 10px;
+  font-size: 0.78rem;
+}
+
+.copol-resumen-detalle {
+  width: calc(100% - 40px);
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(var(--ion-color-primary-rgb), 0.07);
+}
+
+.copol-pagina-ajustes .copol-nota {
+  width: calc(100% - 40px);
+  padding: 7px 4px 4px;
+  font-size: 0.76rem;
+}
+
+.copol-zona-peligro {
+  max-width: 720px;
+  margin: 22px auto 0;
+  padding: 12px 20px 96px;
+  border-top: 1px solid var(--copol-borde);
+}
+
+.copol-zona-peligro ion-button {
+  margin: 0;
+}
+
+.copol-ajustes-grupo ion-list-header {
+  min-height: 36px;
+}
+
+.copol-lista-periodos ion-item {
+  --min-height: 62px;
+}
+
+.copol-lista-periodos .copol-orden {
+  flex: 0 0 24px;
+  min-width: 24px;
+  margin-inline-end: 8px;
+}
+
+.copol-lista-periodos ion-input {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: 0.88rem;
+}
+
+.copol-lista-periodos ion-button {
+  margin-inline-start: 2px;
+}
+
+ion-list-header {
+  min-height: 38px;
+  --background: transparent;
+  padding-inline-start: 15px;
+  padding-inline-end: 13px;
+}
+
+ion-list-header ion-label {
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+ion-item {
+  --min-height: 50px;
+  --padding-start: 14px;
+  --inner-padding-end: 12px;
+  --background: transparent;
+  --border-color: var(--copol-borde);
+}
+
+ion-item h2 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+ion-item p,
+ion-note {
+  color: var(--copol-texto-suave);
+}
+
+ion-button,
+ion-fab-button,
+.copol-celda,
+.copol-swatch {
+  transition: transform 160ms ease, opacity 160ms ease, background-color 160ms ease;
+}
+
+ion-button:active,
+ion-fab-button:active,
+.copol-celda:active,
+.copol-swatch:active {
+  transform: scale(0.98);
+}
+
+ion-fab-button {
+  width: 50px;
+  height: 50px;
+  --box-shadow: 0 8px 18px rgba(40, 51, 70, 0.18);
+}
+
+ion-tab-bar {
+  --background: var(--copol-superficie);
+  --border: 1px solid var(--copol-borde);
+  min-height: 60px;
+  box-shadow: 0 -4px 18px rgba(40, 51, 70, 0.04);
+}
+
+ion-tab-button {
+  --color: var(--copol-texto-suave);
+  --color-selected: var(--ion-color-primary);
+  font-size: 0.7rem;
+}
+
+ion-tab-button ion-icon {
+  font-size: 1.3rem;
+}
+
+ion-segment {
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--ion-background-color);
+}
+
+ion-segment-button {
+  --indicator-box-shadow: none;
+  min-height: 34px;
+  font-size: 0.78rem;
 }
 
 /* ---------- Utilidades ---------- */
 
 .copol-nota {
   display: block;
-  padding: 8px 20px 16px;
+  max-width: 720px;
+  margin-inline: auto;
+  padding: 8px 20px 14px;
   font-size: 0.82rem;
   line-height: 1.45;
 }
@@ -43,18 +261,120 @@
 .copol-seccion {
   display: block;
   padding: 16px 20px 6px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ion-color-medium);
+  max-width: 680px;
+  margin-inline: auto;
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--copol-texto-suave);
 }
 
 .copol-fecha-hoy {
-  margin: 4px 20px 0;
+  width: calc(100% - 40px);
+  max-width: 700px;
+  margin: 6px auto 2px;
   font-size: 0.85rem;
   text-transform: capitalize;
-  color: var(--ion-color-medium);
+  color: var(--copol-texto-suave);
+}
+
+/* ---------- Inicio ---------- */
+
+.copol-resumen-hoy {
+  width: calc(100% - 40px);
+  max-width: 700px;
+  margin: 18px auto 6px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.copol-resumen-fecha {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-transform: capitalize;
+}
+
+.copol-resumen-fecha span {
+  margin-bottom: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--copol-texto-suave);
+}
+
+.copol-resumen-fecha strong {
+  font-size: 1.25rem;
+  font-weight: 680;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--ion-text-color);
+}
+
+.copol-resumen-metricas {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.copol-resumen-metricas > div {
+  display: grid;
+  grid-template-columns: auto;
+  text-align: right;
+}
+
+.copol-resumen-metricas strong {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ion-color-primary);
+}
+
+.copol-resumen-metricas span {
+  margin-top: 3px;
+  font-size: 0.68rem;
+  white-space: nowrap;
+  color: var(--copol-texto-suave);
+}
+
+.copol-inicio .copol-clima {
+  margin-top: 14px;
+  border: 0;
+  background: rgba(var(--ion-color-primary-rgb), 0.08);
+  box-shadow: none;
+}
+
+.copol-bloque-inicio {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.copol-bloque-inicio ion-list-header {
+  min-height: 42px;
+}
+
+.copol-inicio-vacio {
+  margin: 0;
+  padding: 4px 16px 15px;
+  max-width: 60ch;
+  font-size: 0.83rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+  color: var(--copol-texto-suave);
+}
+
+@media (max-width: 370px) {
+  .copol-resumen-hoy {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .copol-resumen-metricas > div {
+    text-align: left;
+  }
 }
 
 .copol-espacio-fab {
@@ -62,14 +382,17 @@
 }
 
 .copol-vacio {
-  padding: 40px 24px;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 48px 28px;
   text-align: center;
-  color: var(--ion-color-medium);
+  color: var(--copol-texto-suave);
 }
 
 .copol-vacio h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
   margin-bottom: 8px;
   color: var(--ion-text-color);
 }
@@ -84,8 +407,8 @@
 
 .copol-franja {
   display: block;
-  width: 4px;
-  height: 34px;
+  width: 3px;
+  height: 32px;
   border-radius: 2px;
   margin-inline-end: 12px;
   flex-shrink: 0;
@@ -121,7 +444,7 @@
 }
 
 .copol-estrella {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: var(--ion-color-medium);
   padding: 6px;
 }
@@ -131,22 +454,26 @@
 }
 
 .copol-clase.en-curso {
-  --background: var(--ion-color-light);
+  --background: rgba(var(--ion-color-primary-rgb), 0.08);
   font-weight: 600;
 }
 
 /* ---------- Cuadrícula del horario ---------- */
 
 .copol-grid {
-  padding: 12px 8px 0;
+  max-width: 900px;
+  margin: 12px auto 0;
+  padding: 14px 10px 8px;
+  background: var(--copol-superficie);
+  border-block: 1px solid var(--copol-borde);
 }
 
 .copol-grid-cabecera,
 .copol-grid-fila {
   display: grid;
   grid-template-columns: var(--copol-hora-ancho) repeat(5, 1fr);
-  gap: 4px;
-  margin-bottom: 4px;
+  gap: 3px;
+  margin-bottom: 3px;
 }
 
 .copol-dia {
@@ -183,7 +510,7 @@
   position: relative;
   height: var(--copol-celda-alto);
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 4px;
   font-family: inherit;
   cursor: pointer;
@@ -196,9 +523,10 @@
 
 .copol-celda.vacia {
   background: var(--copol-celda-vacia);
-  color: var(--ion-color-medium);
-  font-size: 1.1rem;
+  color: var(--copol-texto-suave);
+  font-size: 0.95rem;
   border: 1px dashed var(--copol-celda-borde);
+  opacity: 0.72;
 }
 
 .copol-celda.llena {
@@ -208,6 +536,12 @@
 .copol-celda.ahora {
   outline: 2px solid var(--ion-color-primary);
   outline-offset: 1px;
+}
+
+.copol-celda.vacia:active,
+.copol-celda.vacia:hover {
+  opacity: 1;
+  background: rgba(var(--ion-color-primary-rgb), 0.08);
 }
 
 .copol-celda:focus-visible {
@@ -239,15 +573,18 @@
 
 .copol-paleta {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(5, minmax(34px, 42px));
+  justify-content: space-between;
+  gap: 10px;
+  max-width: 420px;
+  margin-inline: auto;
   padding: 4px 20px 20px;
 }
 
 .copol-swatch {
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   cursor: pointer;
   padding: 0;
 }
@@ -278,7 +615,16 @@
 /* ---------- Clima ---------- */
 
 .copol-clima {
-  margin: 12px 16px 4px;
+  width: calc(100% - 32px);
+  max-width: 720px;
+  margin: 10px auto 2px;
+  border: 1px solid var(--copol-borde);
+  border-radius: 14px;
+  box-shadow: var(--copol-sombra);
+}
+
+.copol-clima ion-card-content {
+  padding: 14px 16px;
 }
 
 .copol-clima-cargando {
@@ -296,7 +642,7 @@
 }
 
 .copol-clima-fila > ion-icon {
-  font-size: 2.1rem;
+  font-size: 1.8rem;
   color: var(--ion-color-primary);
   flex-shrink: 0;
 }
@@ -309,7 +655,7 @@
 }
 
 .copol-clima-datos strong {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   line-height: 1.1;
   color: var(--ion-text-color);
 }
@@ -329,26 +675,41 @@
 }
 
 .copol-clima-consejo {
-  margin: 12px 0 0;
-  padding-top: 10px;
-  border-top: 1px solid var(--ion-color-step-150, rgba(128, 128, 128, 0.2));
+  margin: 9px 0 0;
   font-size: 0.82rem;
   line-height: 1.4;
-  color: var(--ion-text-color);
+  color: var(--copol-texto-suave);
 }
 
 /* ---------- Gráficos ---------- */
 
 .copol-gráfico {
-  padding: 0 16px 8px;
+  width: calc(100% - 32px);
+  max-width: 720px;
+  margin: 12px auto 8px;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--copol-borde);
+  border-radius: 14px;
+  background: var(--copol-superficie);
+  box-shadow: var(--copol-sombra);
+}
+
+.copol-titulo-seccion {
+  margin: 0 2px 12px;
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ion-text-color);
 }
 
 .copol-lienzo {
-  height: 230px;
-  margin-top: 14px;
+  height: 210px;
+  margin-top: 12px;
 }
 
 .copol-segmento {
+  max-width: 720px;
+  margin: 0 auto;
   padding: 8px 16px 4px;
 }
 
@@ -369,4 +730,19 @@
   line-height: 1.35;
   color: var(--ion-text-color);
   margin: 0 0 2px;
+}
+
+@media (hover: hover) {
+  .copol-celda:hover,
+  .copol-swatch:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (min-width: 720px) {
+  .copol-grid {
+    border: 1px solid var(--copol-borde);
+    border-radius: 14px;
+    box-shadow: var(--copol-sombra);
+  }
 }

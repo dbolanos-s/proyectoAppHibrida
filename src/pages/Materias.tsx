@@ -32,7 +32,7 @@ const Materias: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
+      <IonContent fullscreen className="copol-pagina-lista">
         {datos.materias.length === 0 ? (
           <div className="copol-vacio">
             <h2>Empieza por tus materias</h2>
@@ -45,7 +45,7 @@ const Materias: React.FC = () => {
             </IonButton>
           </div>
         ) : (
-          <IonList inset>
+          <IonList inset className="copol-lista-principal">
             {datos.materias.map((m) => {
               const pendientes = datos.tareas.filter(
                 (t) => t.materiaId === m.id && t.estado !== 'entregada'
@@ -82,9 +82,8 @@ const Materias: React.FC = () => {
         )}
 
         {datos.materias.length > 0 && (
-          <IonNote className="copol-nota">
-            Desliza una materia hacia la izquierda para editarla o eliminarla. Eliminar
-            una materia borra también sus clases, sus tareas y su historial.
+          <IonNote className="copol-nota copol-ayuda-lista">
+            Desliza una materia para editarla o eliminarla. Al eliminarla también se borran sus datos relacionados.
           </IonNote>
         )}
 

@@ -10,7 +10,6 @@ import {
   IonList,
   IonListHeader,
   IonLabel,
-  IonItem,
   IonNote,
   IonFab,
   IonFabButton,
@@ -57,7 +56,7 @@ const DetalleBloque: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
+      <IonContent fullscreen className="copol-pagina-detalle">
         {!bloque || !materia ? (
           <div className="copol-vacio">
             <h2>Esta clase ya no existe</h2>
@@ -65,23 +64,20 @@ const DetalleBloque: React.FC = () => {
           </div>
         ) : (
           <>
-            <IonNote className="copol-nota">
+            <IonNote className="copol-nota copol-resumen-detalle">
               {dia?.largo} · {bloque.horaInicio} – {bloque.horaFin}
               {materia.aula ? ` · ${materia.aula}` : ''}
               {materia.docente ? ` · ${materia.docente}` : ''}
             </IonNote>
 
-            <IonList inset>
+            <IonList inset className="copol-lista-principal">
               <IonListHeader>
                 <IonLabel>Pendientes</IonLabel>
               </IonListHeader>
               {pendientes.length === 0 ? (
-                <IonItem lines="none">
-                  <IonNote>
-                    Nada pendiente en esta materia. Toca el botón + para anotar lo que pida el
-                    profesor.
-                  </IonNote>
-                </IonItem>
+                <p className="copol-inicio-vacio">
+                  Nada pendiente. Usa el botón + para anotar una tarea.
+                </p>
               ) : (
                 pendientes.map((t) => (
                   <TarjetaTarea
@@ -95,7 +91,7 @@ const DetalleBloque: React.FC = () => {
             </IonList>
 
             {entregadas.length > 0 && (
-              <IonList inset>
+              <IonList inset className="copol-lista-principal">
                 <IonListHeader>
                   <IonLabel>Entregadas</IonLabel>
                 </IonListHeader>

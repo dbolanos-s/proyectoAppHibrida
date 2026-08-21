@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   IonModal, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton,
-  IonContent, IonList, IonItem, IonInput, IonLabel, IonNote,
+  IonContent, IonList, IonItem, IonInput, IonLabel,
 } from '@ionic/react';
 import type { Materia } from '../types';
 import { useDatos } from '../hooks/useDatos';
@@ -65,8 +65,10 @@ const ModalMateria: React.FC<Props> = ({ abierto, onCerrar, materia }) => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent>
-        <IonList inset>
+      <IonContent className="copol-formulario">
+        <p className="copol-formulario-intro">Solo el nombre es obligatorio. Completa el resto si te ayuda a organizarte.</p>
+
+        <IonList inset className="copol-formulario-lista">
           <IonItem>
             <IonInput
               label="Nombre de la materia" labelPlacement="stacked"
@@ -102,12 +104,7 @@ const ModalMateria: React.FC<Props> = ({ abierto, onCerrar, materia }) => {
           </IonItem>
         </IonList>
 
-        <IonNote className="copol-nota">
-          Escribe tus materias tal como las cursas. Secundaria y bachillerato tienen
-          planes distintos, y dentro del bachillerato cada programa cambia las asignaturas.
-        </IonNote>
-
-        <IonLabel className="copol-seccion">Color de la materia</IonLabel>
+        <IonLabel className="copol-seccion">Color</IonLabel>
         <div className="copol-paleta">
           {PALETA.map((c) => (
             <button

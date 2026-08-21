@@ -21,6 +21,18 @@ export interface Ciudad {
   region: string;
 }
 
+interface ResultadoGeocodificacion {
+  name: string;
+  latitude: number;
+  longitude: number;
+  admin1?: string;
+  country?: string;
+}
+
+interface RespuestaGeocodificacion {
+  results?: ResultadoGeocodificacion[];
+}
+
 const CODIGOS: Record<number, string> = {
   0: 'Despejado', 1: 'Mayormente despejado', 2: 'Parcialmente nublado', 3: 'Nublado',
   45: 'Neblina', 48: 'Neblina con escarcha', 51: 'Llovizna ligera', 53: 'Llovizna',
@@ -45,9 +57,9 @@ export async function buscarCiudad(nombre: string): Promise<Ciudad[]> {
     `?name=${encodeURIComponent(nombre)}&count=5&language=es&format=json`;
   const r = await fetch(url);
   if (!r.ok) throw new Error(`No se pudo buscar la ciudad (HTTP ${r.status})`);
-  const json = await r.json();
+  const json = await r.json() as RespuestaGeocodificacion;
   if (!json.results) return [];
-  return json.results.map((c: any) => ({
+  return json.results.map((c) => ({
     nombre: c.name,
     latitud: c.latitude,
     longitud: c.longitude,

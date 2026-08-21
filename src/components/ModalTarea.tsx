@@ -13,14 +13,12 @@ import {
   IonTextarea,
   IonSelect,
   IonSelectOption,
-  IonLabel,
   IonToggle,
-  IonDatetime,
   IonNote,
 } from '@ionic/react';
 import type { Tarea, EstadoTarea } from '../types';
 import { useDatos } from '../hooks/useDatos';
-import { hoyISO, sumarDias, aISO } from '../utils/fechas';
+import { hoyISO, sumarDias } from '../utils/fechas';
 
 interface Props {
   abierto: boolean;
@@ -104,8 +102,12 @@ const ModalTarea: React.FC<Props> = ({ abierto, onCerrar, tarea, materiaFija, bl
         </IonToolbar>
       </IonHeader>
 
-      <IonContent className="ion-padding">
-        <IonList inset>
+      <IonContent className="copol-formulario">
+        <p className="copol-formulario-intro">
+          {tarea ? 'Actualiza solo lo que necesites.' : 'Título, materia y fecha son suficientes para empezar.'}
+        </p>
+
+        <IonList inset className="copol-formulario-lista">
           <IonItem>
             <IonInput
               label="Título"
@@ -138,8 +140,19 @@ const ModalTarea: React.FC<Props> = ({ abierto, onCerrar, tarea, materiaFija, bl
               labelPlacement="stacked"
               placeholder="Qué pide el profesor, extensión, formato"
               autoGrow
+              rows={2}
               value={descripcion}
               onIonInput={(e) => setDescripcion(e.detail.value ?? '')}
+            />
+          </IonItem>
+
+          <IonItem>
+            <IonInput
+              type="date"
+              label="Fecha de entrega"
+              labelPlacement="stacked"
+              value={fechaEntrega}
+              onIonInput={(e) => setFechaEntrega(e.detail.value ?? hoyISO())}
             />
           </IonItem>
 
@@ -163,23 +176,8 @@ const ModalTarea: React.FC<Props> = ({ abierto, onCerrar, tarea, materiaFija, bl
           </IonItem>
         </IonList>
 
-        <IonLabel className="copol-seccion">Fecha de entrega</IonLabel>
-        <IonDatetime
-          presentation="date"
-          locale="es-EC"
-          firstDayOfWeek={1}
-          value={fechaEntrega}
-          onIonChange={(e) => {
-            const v = e.detail.value;
-            if (typeof v === 'string') setFechaEntrega(aISO(new Date(v)));
-          }}
-        />
-        <IonNote className="copol-nota">
-          Si el profesor cambia la fecha, edítala aquí. El color y el contador se recalculan solos.
-        </IonNote>
-
         {datos.materias.length === 0 && (
-          <IonNote color="danger" className="copol-nota">
+          <IonNote color="danger" className="copol-formulario-aviso">
             Primero crea una materia en la pestaña Materias.
           </IonNote>
         )}

@@ -94,22 +94,29 @@ const Hoy: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Hoy</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
-        <p className="copol-fecha-hoy">
-          {nombreDiaLargo(hoyISO())} {fechaLegible(hoyISO())}
-        </p>
+      <IonContent fullscreen className="copol-inicio">
+        <section className="copol-resumen-hoy" aria-label="Resumen de hoy">
+          <div className="copol-resumen-fecha">
+            <span>{nombreDiaLargo(hoyISO())}</span>
+            <strong>{fechaLegible(hoyISO())}</strong>
+          </div>
+          <div className="copol-resumen-metricas">
+            <div>
+              <strong>{activas.length}</strong>
+              <span>pendientes</span>
+            </div>
+            <div>
+              <strong>{clasesHoy.length}</strong>
+              <span>clases hoy</span>
+            </div>
+          </div>
+        </section>
 
         {!listo && <IonNote className="copol-nota">Cargando tus datos…</IonNote>}
          <TarjetaClima />
 
         {/* 1. Destacadas */}
-        <IonList inset>
+        <IonList inset className="copol-bloque-inicio">
           <IonListHeader>
             <IonLabel>
               <IonIcon icon={star} aria-hidden="true" /> Destacadas
@@ -118,11 +125,9 @@ const Hoy: React.FC = () => {
           </IonListHeader>
 
           {destacadas.length === 0 ? (
-            <IonItem lines="none">
-              <IonNote>
-                Marca una tarea con la estrella y aparecerá aquí con su cuenta regresiva.
-              </IonNote>
-            </IonItem>
+            <p className="copol-inicio-vacio">
+              Marca una tarea con la estrella para verla aquí con su cuenta regresiva.
+            </p>
           ) : (
             visibles.map((t) => (
               <TarjetaTarea key={t.id} tarea={t} onEditar={abrirEdicion} />
@@ -146,7 +151,7 @@ const Hoy: React.FC = () => {
         </IonList>
 
         {/* 2. Clases del día */}
-        <IonList inset>
+        <IonList inset className="copol-bloque-inicio">
           <IonListHeader>
             <IonLabel>
               <IonIcon icon={calendarClear} aria-hidden="true" /> Clases de hoy
@@ -154,13 +159,13 @@ const Hoy: React.FC = () => {
           </IonListHeader>
 
           {diaHoy === 0 ? (
-            <IonItem lines="none">
-              <IonNote>Hoy es fin de semana. Buen momento para adelantar pendientes.</IonNote>
-            </IonItem>
+            <p className="copol-inicio-vacio">
+              Hoy es fin de semana. Buen momento para adelantar pendientes.
+            </p>
           ) : clasesHoy.length === 0 ? (
-            <IonItem lines="none">
-              <IonNote>No tienes clases registradas hoy. Arma tu horario en la pestaña Horario.</IonNote>
-            </IonItem>
+            <p className="copol-inicio-vacio">
+              No hay clases registradas. Puedes armar tu día desde Horario.
+            </p>
           ) : (
             clasesHoy.map((b) => {
               const materia = materiaDe(b.materiaId);
@@ -196,20 +201,15 @@ const Hoy: React.FC = () => {
         </IonList>
 
         {/* 3. Entregas próximas */}
-        <IonList inset>
+        <IonList inset className="copol-bloque-inicio">
           <IonListHeader>
             <IonLabel>Próximos 7 días</IonLabel>
           </IonListHeader>
           {proximas.length === 0 ? (
-            <IonItem lines="none">
-              <IonNote>Sin entregas en la próxima semana.</IonNote>
-            </IonItem>
+            <p className="copol-inicio-vacio">Sin entregas en la próxima semana.</p>
           ) : (
             proximas.map((t) => <TarjetaTarea key={t.id} tarea={t} onEditar={abrirEdicion} />)
           )}
-        </IonList>
-        <IonList inset>
-          <IonListHeader><IonLabel>Cómo viene tu carga</IonLabel></IonListHeader>
         </IonList>
         <GraficoEntregas vista={vistaGrafico} onCambiarVista={setVistaGrafico} />
         <div className="copol-espacio-fab" />

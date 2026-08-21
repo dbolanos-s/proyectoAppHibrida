@@ -83,8 +83,8 @@ const Ajustes: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
-        <IonList inset>
+      <IonContent fullscreen className="copol-pagina-ajustes">
+        <IonList inset className="copol-ajustes-grupo">
           <IonListHeader><IonLabel>Apariencia</IonLabel></IonListHeader>
           <IonItem>
             <IonSelect
@@ -98,7 +98,7 @@ const Ajustes: React.FC = () => {
           </IonItem>
         </IonList>
 
-        <IonList inset>
+        <IonList inset className="copol-ajustes-grupo">
           <IonListHeader><IonLabel>Clima</IonLabel></IonListHeader>
           <IonItem>
             <IonToggle
@@ -128,11 +128,10 @@ const Ajustes: React.FC = () => {
           ))}
         </IonList>
         <IonNote className="copol-nota">
-          El clima se consulta a Open-Meteo, un servicio gratuito y sin registro. Solo se
-          envían las coordenadas de la ciudad, ningún dato tuyo.
+          El clima usa Open-Meteo y solo envía las coordenadas de la ciudad.
         </IonNote>
 
-        <IonList inset>
+        <IonList inset className="copol-ajustes-grupo">
           <IonListHeader><IonLabel>Respaldo en la nube</IonLabel></IonListHeader>
           {!firebaseConfigurado() ? (
             <IonItem lines="none">
@@ -156,13 +155,12 @@ const Ajustes: React.FC = () => {
           )}
         </IonList>
         <IonNote className="copol-nota">
-          Restaurar reemplaza todo lo que tengas en este dispositivo por lo que esté guardado
-          en el respaldo. No se puede deshacer.
+          Restaurar reemplaza los datos de este dispositivo y no se puede deshacer.
         </IonNote>
 
-        <div className="ion-padding">
-          <IonButton expand="block" fill="clear" color="medium" size="small" onClick={reiniciar}>
-            Borrar todos los datos de este dispositivo
+        <div className="copol-zona-peligro">
+          <IonButton expand="block" fill="clear" color="danger" size="small" onClick={reiniciar}>
+            Borrar datos del dispositivo
           </IonButton>
         </div>
 
