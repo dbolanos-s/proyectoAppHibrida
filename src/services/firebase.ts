@@ -3,25 +3,7 @@ import { getAuth, signInAnonymously, onAuthStateChanged, type Auth } from 'fireb
 import { getDatabase, ref, set, get, type Database } from 'firebase/database';
 import type { DatosApp } from '../types';
 
-/**
- * Configuración de Firebase. Estas claves son públicas por diseño: no son un
- * secreto. La seguridad vive en las reglas de Realtime Database, no aquí.
- *
- * Reglas mínimas que debes pegar en la consola de Firebase:
- *
- * {
- *   "rules": {
- *     "usuarios": {
- *       "$uid": {
- *         ".read":  "auth != null && auth.uid == $uid",
- *         ".write": "auth != null && auth.uid == $uid"
- *       }
- *     }
- *   }
- * }
- *
- * Sin estas reglas la base queda abierta a internet entero.
- */
+
 
 const configuracion = {
   apiKey: "AIzaSyAKvvhh65KxVgrtMsfpb3jcLoEVWT7gzlc",
